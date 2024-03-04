@@ -174,7 +174,9 @@ router.get('/houses', async (req, res) => {
       }
     );
     const houses = await response.json();
-    let house = houses.filter((house) => house.name == req.query.name);
+    let house = houses.filter(
+      (house) => house.name.toLowerCase() == req.query.name.toLowerCase()
+    );
     if (house) {
       res.status(200).send(house);
     } else {
