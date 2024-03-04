@@ -184,4 +184,6 @@ router.get('/houses', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => console.log(`Node.js server listening on port ${PORT}`));
+app.listen(PORT, () =>
+  console.log(`Node.js server is listening on port ${PORT}`)
+);
