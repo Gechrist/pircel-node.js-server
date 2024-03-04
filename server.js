@@ -32,7 +32,7 @@ app.use(
   })
 );
 
-// local house array just in case
+// locally stored house array just in case
 // const houses = [
 //   {
 //     id: '0367baf3-1cb6-4baf-bede-48e17e1cd005',
