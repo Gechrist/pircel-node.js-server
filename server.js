@@ -177,11 +177,7 @@ router.get('/houses', async (req, res) => {
     let house = houses.filter(
       (house) => house.name.toLowerCase() == req.query.name.toLowerCase()
     );
-    if (house) {
-      res.status(200).send(house);
-    } else {
-      res.status(404).send({ message: 'House not found' });
-    }
+    res.status(200).send(house);
   } catch (e) {
     (e) => console.log('Error:', e.message);
     res.send(e.message);
