@@ -24,10 +24,10 @@ app.use((req, res, next) => {
 });
 
 // cors
+//    origin: '*',
 app.use(
   cors({
-    origin: '*',
-    // origin: CLIENT_ORIGIN_URL,
+    origin: 'https://pircelhousestest.netlify.app',
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     maxAge: 86400,
   })
