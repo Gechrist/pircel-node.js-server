@@ -5,7 +5,7 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
-const PORT = process.env.SERVER_PORT;
+const PORT = process.env.PORT;
 const CLIENT_ORIGIN_URL = process.env.CLIENT_ORIGIN_URL;
 
 const app = express();
@@ -26,7 +26,8 @@ app.use((req, res, next) => {
 // cors
 app.use(
   cors({
-    origin: CLIENT_ORIGIN_URL,
+    origin: '*',
+    // origin: CLIENT_ORIGIN_URL,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     maxAge: 86400,
   })
@@ -163,6 +164,26 @@ app.use(
 
 //getting data from api and sending them to client
 router.get('/houses', async (req, res) => {
+  try {
+    const response = await fetch(
+      'https://wizard-world-api.herokuapp.com/houses',
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+    const houses = await response.json();
+    res.status(200).send(houses);
+  } catch (e) {
+    (e) => console.log('Error:', e.message);
+    res.send(e.message);
+  }
+});
+
+//get specific house
+router.get('/specifichouse', async (req, res) => {
   try {
     const response = await fetch(
       'https://wizard-world-api.herokuapp.com/houses',
