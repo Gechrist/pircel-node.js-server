@@ -195,6 +195,8 @@ router.get('/specifichouse', async (req, res) => {
   }
 });
 
+app.use(cors());
+
 app.listen(PORT, () =>
   console.log(`Node.js server is listening on port ${PORT}`)
 );
