@@ -24,7 +24,7 @@ app.use((req, res, next) => {
 });
 app.use(
   cors({
-    origin: 'https://https://pircelhousestest.netlify.app',
+    origin: 'https://pircelhousestest.netlify.app',
     headers: ['Content-Type'],
     credentials: true,
   })
