@@ -11,18 +11,6 @@ const CLIENT_ORIGIN_URL = process.env.CLIENT_ORIGIN_URL;
 const app = express();
 const router = express.Router();
 
-app.use(express.json());
-app.use(router);
-app.set('json spaces', 2);
-
-//helmet
-app.use(helmet());
-
-app.use((req, res, next) => {
-  res.contentType('application/json; charset=utf-8');
-  next();
-});
-
 //cors
 app.use(
   cors({
@@ -37,6 +25,18 @@ app.use(
     enablePreflight: true,
   })
 );
+
+app.use(express.json());
+app.use(router);
+app.set('json spaces', 2);
+
+//helmet
+app.use(helmet());
+
+app.use((req, res, next) => {
+  res.contentType('application/json; charset=utf-8');
+  next();
+});
 
 // locally stored house array just in case
 // const houses = [
