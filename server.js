@@ -6,12 +6,11 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 const PORT = process.env.PORT;
-const CLIENT_ORIGIN_URL = process.env.CLIENT_ORIGIN_URL;
 
 const app = express();
 const router = express.Router();
 
-//cors
+//cors goes before all middleware
 app.use(
   cors({
     origin: 'https://pircelhousestest.netlify.app',
