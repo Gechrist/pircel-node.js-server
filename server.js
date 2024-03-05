@@ -16,28 +16,12 @@ app.use(router);
 app.set('json spaces', 2);
 
 //helmet
-app.use(helmet());
+//app.use(helmet());
 
 app.use((req, res, next) => {
   res.contentType('application/json; charset=utf-8');
   next();
 });
-
-app.use(
-  cors({
-    origin: true,
-    optionsSuccessStatus: 200,
-    credentials: true,
-  })
-);
-app.options(
-  '*',
-  cors({
-    origin: true,
-    optionsSuccessStatus: 200,
-    credentials: true,
-  })
-);
 
 // locally stored house array just in case
 // const houses = [
