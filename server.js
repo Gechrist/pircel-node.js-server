@@ -26,7 +26,7 @@ app.use((req, res, next) => {
 // cors
 app.use(
   cors({
-    origin: '*', // or client_origin_url
+    origin: CLIENT_ORIGIN_URL,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     maxAge: 86400,
   })
