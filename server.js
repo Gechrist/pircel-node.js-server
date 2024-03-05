@@ -16,17 +16,25 @@ app.use(router);
 app.set('json spaces', 2);
 
 //helmet
-//app.use(helmet());
+app.use(helmet());
 
 app.use((req, res, next) => {
   res.contentType('application/json; charset=utf-8');
   next();
 });
+
+//cors
 app.use(
   cors({
     origin: 'https://pircelhousestest.netlify.app',
-    headers: ['Content-Type'],
+    allowedHeaders: [
+      'Content-Type',
+      'Authorization',
+      'Access-Control-Allow-Methods',
+      'Access-Control-Request-Headers',
+    ],
     credentials: true,
+    enablePreflight: true,
   })
 );
 
