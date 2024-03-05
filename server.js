@@ -19,14 +19,14 @@ app.set('json spaces', 2);
 //app.use(helmet());
 
 app.use((req, res, next) => {
-  //res.contentType('application/json; charset=utf-8');
+  res.contentType('application/json; charset=utf-8');
   next();
 });
 
 app.use((req, res, next) => {
   res.setHeader(
     'Access-Control-Allow-Origin',
-    'https://pircelhousestest.netlify.app/searchterm'
+    'https://pircelhousestest.netlify.app'
   );
   res.setHeader(
     'Access-Control-Allow-Methods',
