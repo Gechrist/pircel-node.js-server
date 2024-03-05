@@ -19,10 +19,30 @@ app.set('json spaces', 2);
 //app.use(helmet());
 
 app.use((req, res, next) => {
-  res.contentType('application/json; charset=utf-8');
+  //res.contentType('application/json; charset=utf-8');
   next();
 });
 
+app.use((req, res, next) => {
+  res.setHeader(
+    'Access-Control-Allow-Origin',
+    'https://pircelhousestest.netlify.app/searchterm'
+  );
+  res.setHeader(
+    'Access-Control-Allow-Methods',
+    'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS,CONNECT,TRACE'
+  );
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'Content-Type, Authorization, X-Content-Type-Options, Accept, X-Requested-With, Origin, Access-Control-Request-Method, Access-Control-Request-Headers'
+  );
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader('Access-Control-Allow-Private-Network', true);
+  //  Firefox caps this at 24 hours (86400 seconds). Chromium (starting in v76) caps at 2 hours (7200 seconds). The default value is 5 seconds.
+  res.setHeader('Access-Control-Max-Age', 7200);
+
+  next();
+});
 // locally stored house array just in case
 // const houses = [
 //   {
@@ -194,8 +214,6 @@ router.get('/specifichouse', async (req, res) => {
     res.send(e.message);
   }
 });
-
-app.use(cors());
 
 app.listen(PORT, () =>
   console.log(`Node.js server is listening on port ${PORT}`)
